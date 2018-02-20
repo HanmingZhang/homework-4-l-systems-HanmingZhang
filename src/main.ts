@@ -29,7 +29,7 @@ const controls = {
 };
 
 // Camera
-const camera = new Camera(vec3.fromValues(0, 43, 45), vec3.fromValues(0, 46, -11));
+const camera = new Camera(vec3.fromValues(0, 49, 41), vec3.fromValues(0, 48, -8));
 
 function printCameraInfo(){
   console.log(camera.controls.eye);
@@ -225,7 +225,7 @@ function GenerateMergedBranchMesh(branches: Branch[]){
       let baseHeight = 0.0;
       let shrinkStep = 4.5; // how long should I shrink branch
       let shrinkRate = 0.08; // how much should I shrink each time
-      let shrinkResult = 1.0 - clamp(0.0, 0.95, shrinkRate * (branchHeight - baseHeight)/shrinkStep);
+      let shrinkResult = 1.0 - clamp(0.0, 0.96, shrinkRate * (branchHeight - baseHeight)/shrinkStep);
 
       let indexOffset = indices.length;
       
@@ -304,7 +304,8 @@ function GenerateMergedLeavesMesh(geos: Geometry[]){
     for(let i = 0; i < geos.length; i++){
 
       // make sure this string represents a leaf
-      if(geos[i].geom != "X"){
+      // if(geos[i].geom != "X"){
+	  if(geos[i].geom != "!"){
         continue;
       }
 
@@ -503,8 +504,9 @@ function main() {
   // var rules = ['X', ' X -> F[-X]F[-X]+F[X]', 'F -> FF',];
 
   // This is Rule 2
-  var rules = ['R', 'R -> FA', 'A -> [&FLA]/////[&FLA]///////[&FLA]', 'F -> S/////F', 'F -> LS//L//F','S -> FL', 'L -> [∧∧X]'];  
-  
+  // var rules = ['R', 'R -> FA', 'A -> [&FLA]/////[&FLA]///////[&FLA]', 'F -> S/////F', 'F -> LS//L//F','S -> FL', 'L -> [∧∧X]'];  
+  var rules = ['R', 'R -> FA', 'A -> [&FL!A]/////[&FL!A]///////[&FL!A]', 'F -> S/////F', 'F -> LS//L//F', 'S -> FL', 'L -> [∧∧{-f+f+f-|-f+f+f}]'];
+
   // This is Rule 3
   // var rules = ['A', 
   //              'A -> B+[A+E]--//[--D]B[++D]-[AE]++AE',
