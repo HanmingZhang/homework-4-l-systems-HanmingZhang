@@ -1,12 +1,24 @@
 # Homework 4: L-systems
 
-For this assignment, you will design a set of formal grammar rules to create
-a plant life using an L-system program. Once again, you will work from a
-Typescript / WebGL 2.0 base code like the one you used in homework 0. You will
-implement your own set of classes to handle the L-system grammar expansion and
-drawing. You will rasterize your L-system using faceted geometry. Feel free
-to use ray marching to generate an interesting background, but trying to
-raymarch an entire L-system will take too long to render!
+## [Demo Link](https://hanmingzhang.github.io/homework-4-l-systems-HanmingZhang/)
+
+## ScreenShots
+
+Night Scene | Day Scene
+-------------- | --------------
+![](./img/darkscene.jpg) | ![](./img/dayscene.jpg)
+
+## L-System
+In terms of some L-System details and 3D L-System rules, I refer a lot from the paper [Graphical modeling using
+L-systems](http://algorithmicbotany.org/papers/abop/abop-ch1.pdf). The tree drawing is a map of probabilities when there are several related rules for the same character. As a result, you can see a **slightly different tree and flowers everytime you refresh the page**. Also, as the tree grows higher, the branch will turns thinner, which I think is what happens to a real tree. Since everytime a tree is "draw", the mesh has to be reconstructed, so **it may take a while to load the page or change the L-system parameter in the GUI panel**.
+
+## Falling petals and "Fireflies"
+
+Actually, I implemented another super simple particle system using WebGL 2.0 transform feedback. But so far, I'm still working on how to incoporate obj into that. So the falling petals are actually "keyframed" and the "Fireflies" refers a lot from iq's shadertoy project [Sphere-fog density](https://www.shadertoy.com/view/XljGDy)
+
+
+
+__________________________________________
 
 ## L-System Components
 The way you implement your L-System is ultimately up to you, but we recommend
